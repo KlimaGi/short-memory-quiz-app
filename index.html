@@ -6,17 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>short memory quiz</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
 <script src="script.js" defer></script>
 </head>
 
-<body>
+<body> 
   
-  <div class="quiz-container" id="quiz">
-    <div class="quiz-header1" id="quizNumVisas"></div>
-  <div class="quiz-header" id="quizNum"></div>
-  <input class="input" id="inputNum" type="number">
-<button class="button" id="submit">Submit</button>
-  </div>
+ <div class="quiz-container">
+   <input type="text" id="num-length" class="input" placeholder="the number length">
+   
+<p class="quiz-num" id="quiz-num"></p>
+
+  <input type="text" id="inputMain" class="input">
+  <button type="submit" class="btn btn-primary button" id="submitMain">enter</button>
+ 
+<p class="" id="check"></p>
+</div>
+
 </body>
 
 </html>

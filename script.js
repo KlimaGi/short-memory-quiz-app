@@ -1,42 +1,47 @@
-const quizNumEl = document.getElementById("quizNum");
-const quizNumVisasEl = document.getElementById("quizNumVisas");
-const inputNumEl = document.getElementById("inputNum");
-const submitEl = document.getElementById("submit");
+var quizNumEl = document.getElementById("quiz-num");
+var numLengthEl = document.getElementById("num-length");
+var inputNumEl = document.getElementById("inputMain");
 
-function randomNum() {
-  return Math.floor(Math.random() * 10);
-}
-
-var numLength = 5;
+var submitMainEl = document.getElementById("submitMain");
 
 function generateNum(n = 4) {
-  let generateNum = [];
+  let sum = "";
   for (let i = 0; i < n; i++) {
-    generateNum[i] = randomNum();
+    var skRand = Math.floor(Math.random() * 10);
+    sum += skRand;
   }
-
-  return generateNum;
+  return sum;
 }
-var ms = 1000;
+numLengthEl.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    var num = generateNum(numLengthEl.value);
+    quizNumEl.innerHTML = num;
+  }
+});
 
-function sleep(ms) {
-  const date = Date.now();
-  let currentDate = null;
-  do {
-    currentDate = Date.now();
-  } while (currentDate - date < ms);
+function check() {
+  var checkText =
+    quizNumEl.textContent == inputNumEl.value
+      ? `<i class="fas fa-check-circle green"></i>`
+      : `<i class="fas fa-times-circle red"></i>`;
+
+  document.getElementById("check").innerHTML = checkText;
+  return checkText;
 }
 
-function later() {
-  quizNumVisasEl.innerHTML = generateNum();
-
-  for (var i = 0; i < generateNum.length; i++) {
-    quizNumEl.innerHTML = generateNum[i];
-    sleep(ms);
+function numLengthDependency() {
+  if (true) {
   }
 }
 
-later();
-
-// setInterval(countdown, 1000);
-// timer = setTimeout(showNum, 1000);
+inputMain.addEventListener("keyup", (e) => {
+  if (e.keyCode === 13) {
+    e.preventDefault();
+    check();
+  }
+});
+submitMain.addEventListener("click", (e) => {
+  e.preventDefault();
+  check();
+});
