@@ -10,11 +10,13 @@
   display: flexbox;
   align-items: center;
   justify-content: center;
-  height: 12rem;
+  height: 15rem;
   width: 18rem;
   border: 1px solid darkgreen;
   padding: 2rem;
   margin: 8rem auto;
+}
+.title {
 }
 /*TODO: not working, check why */
 .num-length {
