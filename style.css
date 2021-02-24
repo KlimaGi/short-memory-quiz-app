@@ -15,13 +15,16 @@
   border: 1px solid darkgreen;
   padding: 2rem;
   margin: 8rem auto;
+  border-radius: 3px;
 }
-.title {
+#title {
+  margin-top: -3.1rem;
+  background-color: white;
+  width: 13.4rem;
+  padding: 0 1rem;
+  font-size: 1.2rem;
 }
-/*TODO: not working, check why */
-.num-length {
-  min-width: 2rem;
-}
+
 .quiz-num {
   width: 1.5rem;
   margin: 0 auto;
@@ -30,7 +33,9 @@
   font-size: 1.3rem;
   font-weight: 500;
 }
-
+#num-length {
+  margin-top: 3rem;
+}
 input {
   min-width: 2rem;
   margin: 1rem auto;

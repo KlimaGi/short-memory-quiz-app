@@ -1,58 +1,76 @@
 var quizNumEl = document.getElementById("quiz-num");
 var numLengthEl = document.getElementById("num-length");
 var inputNumEl = document.getElementById("inputMain");
+var submitNumLengthEl = document.getElementById("submitNumLength");
 var submitMainEl = document.getElementById("submitMain");
 var resultEl = document.getElementById("result");
 // main quiz logic
-var n = 4;
-function generateNum(n) {
-  let sum = "";
-  for (let i = 0; i < n; i++) {
+var numLength = 4;
+
+function generateNum(numLength) {
+  let showNum = "";
+  for (let i = 0; i < numLength; i++) {
     var skRand = Math.floor(Math.random() * 10);
-    sum += skRand;
+    showNum += skRand;
   }
-  quizNumEl.innerHTML = sum;
-  setTimeout(hide, (n * 1000) / 2);
+  quizNumEl.innerHTML = showNum;
+  setTimeout(hide, (numLength * 1000) / 2);
 }
-numLengthEl.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13 && numLengthEl.value == "") {
-    e.preventDefault();
-    generateNum(n);
-  } else if (e.keyCode === 13 && numLengthEl.value != "") {
-    e.preventDefault();
-    n = numLengthEl.value;
-    generateNum(n);
+
+function show(event) {
+  if (numLengthEl.value == "") {
+    event.preventDefault();
+    generateNum(numLength);
+  } else if (numLengthEl.value != "") {
+    event.preventDefault();
+    numLength = numLengthEl.value;
+    generateNum(numLength);
+  }
+}
+
+numLengthEl.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    show(event);
   }
 });
+submitNumLengthEl.addEventListener("click", show, false);
 
 function check() {
   var checkText = "";
   if (quizNumEl.textContent == inputNumEl.value) {
     checkText = `<i class="fas fa-check-circle green"></i>`;
-    generateNum(++n);
+    generateNum(++numLength);
+    countResult(numLength);
   } else {
     checkText = `<i class="fas fa-times-circle red"></i>`;
-    generateNum(--n);
+    generateNum(--numLength);
   }
 
   document.getElementById("check").innerHTML = checkText;
 }
 
-inputMain.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13) {
-    e.preventDefault();
-    check();
-    inputNumEl.value = "";
-    quizNumEl.style.color = "black";
+var result = 0;
+function countResult(numLength) {
+  if (numLength > result) {
+    result = numLength;
   }
-});
-submitMain.addEventListener("click", (e) => {
-  e.preventDefault();
+  console.log(result);
+  resultEl.innerHTML = result;
+}
+function submitNum(event) {
+  event.preventDefault();
   check();
   inputNumEl.value = "";
-  quizNumEl.style.color = "black";
+  quizNumEl.style.visibility = "visible";
+}
+
+inputMain.addEventListener("keyup", (event) => {
+  if (event.keyCode === 13) {
+    submitNum(event);
+  }
 });
+submitMain.addEventListener("click", submitNum, false);
 // additional quiz "features"
 function hide() {
-  quizNumEl.style.color = "white";
+  quizNumEl.style.visibility = "hidden";
 }
