@@ -26,6 +26,7 @@ function show(event) {
     numLength = numLengthEl.value;
     generateNum(numLength);
   }
+  inputNumEl.focus();
 }
 
 numLengthEl.addEventListener("keyup", (event) => {

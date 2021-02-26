@@ -10,7 +10,7 @@
   display: flexbox;
   align-items: center;
   justify-content: center;
-  height: 15rem;
+  min-height: 15rem;
   width: 18rem;
   border: 1px solid darkgreen;
   padding: 2rem;
@@ -60,4 +60,20 @@ input {
 }
 .green {
   color: green;
+}
+section {
+  display: inline-flex;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.total-check {
+  justify-content: right;
+}
+.total-text {
+  padding-left: 6.5rem;
+}
+.total-num {
+  padding-left: 1rem;
 }
